@@ -137,10 +137,12 @@ class NerProcessor(DataProcessor):
 
     def _read_data(self, input_file):
         """Reads a BIO data."""
+        print(input_file)
         with codecs.open(input_file, 'r', encoding='utf-8') as f:
             lines = []
             words = []
             labels = []
+            print("读取到train.txt数据量：" + str(len(f)))
             for line in f:
                 contends = line.strip()
                 tokens = contends.split(' ')
