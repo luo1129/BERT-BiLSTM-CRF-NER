@@ -41,7 +41,7 @@ def get_args_parser():
                         help='Whether to run training.')
     group2.add_argument('-do_eval', type=bool, default=True,
                         help='Whether to run eval on the dev set.')
-    group2.add_argument('-do_predict', type=bool, default=True,
+    group2.add_argument('-do_predict', type=bool, default=False,
                         help='Whether to run the model in inference mode on the test set.')
     group2.add_argument('-batch_size', type=int, default=64,
                         help='Total batch size for training, eval and predict.')
