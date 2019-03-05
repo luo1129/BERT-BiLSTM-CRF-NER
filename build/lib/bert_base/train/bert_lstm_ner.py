@@ -162,6 +162,7 @@ class NerProcessor(DataProcessor):
                         continue
                 if contends.startswith("-DOCSTART-"):
                     continue
+            print("读取到train.txt数据量："+str(len(lines)))
             return lines
 
 
