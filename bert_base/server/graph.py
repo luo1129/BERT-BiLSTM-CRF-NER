@@ -273,7 +273,7 @@ def optimize_ner_model(args, num_labels,  logger=None):
         if os.path.exists(pb_file):
             print('pb_file exits', pb_file)
             return pb_file
-
+        print(1)
         import tensorflow as tf
 
         graph = tf.Graph()
@@ -297,10 +297,13 @@ def optimize_ner_model(args, num_labels,  logger=None):
                 from tensorflow.python.framework import graph_util
                 tmp_g = graph_util.convert_variables_to_constants(sess, graph.as_graph_def(), ['pred_ids'])
                 logger.info('model cut finished !!!')
+        print(2)
         # 存储二进制模型到文件中
         logger.info('write graph to a tmp file: %s' % pb_file)
         with tf.gfile.GFile(pb_file, 'wb') as f:
             f.write(tmp_g.SerializeToString())
+        print(pb_file)
+        print(3)
         return pb_file
     except Exception as e:
         logger.error('fail to optimize the graph! %s' % e, exc_info=True)
