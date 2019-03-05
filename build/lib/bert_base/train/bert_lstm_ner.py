@@ -149,7 +149,8 @@ class NerProcessor(DataProcessor):
                     words.append(tokens[0])
                     labels.append(tokens[-1])
                 else:
-                    print("读取到labels数据量：" + str(len(labels)))
+                    print("contends：" + str(len(contends)))
+                    print("words：" + str(len(words)))
                     if len(contends) == 0 and len(words) > 0:
                         print("我在这里")
                         label = []
