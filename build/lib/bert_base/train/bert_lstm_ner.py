@@ -149,8 +149,6 @@ class NerProcessor(DataProcessor):
                     words.append(tokens[0])
                     labels.append(tokens[-1])
                 else:
-                    print("contends：" + str(len(contends)))
-                    print("words：" + str(len(words)))
                     if len(contends) == 0 and len(words) > 0:
                         print("我在这里")
                         label = []
@@ -160,6 +158,8 @@ class NerProcessor(DataProcessor):
                                 label.append(l)
                                 self.labels.add(l)
                                 word.append(w)
+                                print(label)
+                        print(label)
                         lines.append([' '.join(label), ' '.join(word)])
                         words = []
                         labels = []
