@@ -151,6 +151,7 @@ class NerProcessor(DataProcessor):
                 else:
                     print("读取到labels数据量：" + str(len(labels)))
                     if len(contends) == 0 and len(words) > 0:
+                        print("我在这里")
                         label = []
                         word = []
                         for l, w in zip(labels, words):
