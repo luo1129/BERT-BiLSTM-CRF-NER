@@ -43,7 +43,7 @@ def get_args_parser():
                         help='Whether to run eval on the dev set.')
     group2.add_argument('-do_predict', type=bool, default=False,
                         help='Whether to run the model in inference mode on the test set.')
-    group2.add_argument('-batch_size', type=int, default=64,
+    group2.add_argument('-batch_size', type=int, default=32,
                         help='Total batch size for training, eval and predict.')
     group2.add_argument('-learning_rate', type=float, default=1e-5,
                         help='The initial learning rate for Adam.')
