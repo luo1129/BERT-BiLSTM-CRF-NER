@@ -1,4 +1,4 @@
-Metadata-Version: 2.1
+Metadata-Version: 1.1
 Name: bert-base
 Version: 0.0.7
 Summary: Use Google's BERT for Chinese natural language processing tasks such as named entity recognition and provide server services
@@ -6,6 +6,7 @@ Home-page: https://github.com/macanv/BERT-BiLSTM-CRF-NER
 Author: Ma Can
 Author-email: ma_cancan@163.com
 License: MIT
+Description-Content-Type: text/markdown
 Description: # BERT-BiLSMT-CRF-NER
         Tensorflow solution of NER task Using BiLSTM-CRF model with Google BERT Fine-tuning
         
@@ -352,7 +353,3 @@ Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3.6
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
-Description-Content-Type: text/markdown
-Provides-Extra: http
-Provides-Extra: cpu
-Provides-Extra: gpu
