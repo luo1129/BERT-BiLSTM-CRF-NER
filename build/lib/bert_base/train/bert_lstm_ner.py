@@ -142,8 +142,8 @@ class NerProcessor(DataProcessor):
             lines = []
             words = []
             labels = []
-            print("读取到train.txt数据量：" + str(len(f)))
             for line in f:
+                print("读取到train.txt数据量：" + line)
                 contends = line.strip()
                 tokens = contends.split(' ')
                 if len(tokens) == 2:
