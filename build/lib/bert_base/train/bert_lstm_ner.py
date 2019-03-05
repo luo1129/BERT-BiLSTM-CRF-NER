@@ -143,13 +143,13 @@ class NerProcessor(DataProcessor):
             words = []
             labels = []
             for line in f:
-                print("读取到train.txt数据量：" + line)
                 contends = line.strip()
                 tokens = contends.split(' ')
                 if len(tokens) == 2:
                     words.append(tokens[0])
                     labels.append(tokens[-1])
                 else:
+                    print("读取到labels数据量：" + str(len(labels)))
                     if len(contends) == 0 and len(words) > 0:
                         label = []
                         word = []
