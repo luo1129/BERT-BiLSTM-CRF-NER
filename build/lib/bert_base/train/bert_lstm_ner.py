@@ -118,8 +118,7 @@ class NerProcessor(DataProcessor):
         else:
             if len(self.labels) > 0:
                 self.labels = self.labels.union(set(["X", "[CLS]", "[SEP]"]))
-                with codecs.open(os.path.join(self.output_dir, 'label_list.pkl'), 'wb') as rf:
-                    pickle.dump(self.labels, rf)
+
             else:
                 self.labels = ["O", 'B-TIM', 'I-TIM', "B-PER", "I-PER", "B-ORG", "I-ORG", "B-LOC", "I-LOC", "X", "[CLS]", "[SEP]"]
         return self.labels
