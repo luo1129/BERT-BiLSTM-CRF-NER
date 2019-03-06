@@ -39,7 +39,8 @@ class BLSTM_CRF(object):
         self.lengths = lengths
         self.embedding_dims = embedded_chars.shape[-1].value
         self.is_training = is_training
-
+        print("+++++++++++++++++++++++++++++++")
+        print(self.num_labels)
     def add_blstm_crf_layer(self, crf_only):
         """
         blstm-crf网络
