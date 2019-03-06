@@ -94,6 +94,7 @@ class BertServer(threading.Thread):
                 from .graph import optimize_ner_model
                 num_labels, label2id, id2label = init_predict_var(self.args.model_dir)
                 self.num_labels = num_labels + 1
+                print(self.num_labels)
                 self.id2label = id2label
                 self.graph_path = pool.apply(optimize_ner_model, (self.args, num_labels))
             if self.graph_path:
