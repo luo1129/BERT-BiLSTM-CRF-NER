@@ -154,6 +154,8 @@ class BLSTM_CRF(object):
         :return: scalar loss
         """
         with tf.variable_scope("crf_loss"):
+            print("@@@@@@@@@@@@@@@@@@@")
+            print([self.num_labels, self.num_labels])
             trans = tf.get_variable(
                 "transitions",
                 shape=[self.num_labels, self.num_labels],
