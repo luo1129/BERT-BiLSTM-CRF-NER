@@ -576,7 +576,7 @@ def train(args):
     print(len(label_list) + 1)
     model_fn = model_fn_builder(
         bert_config=bert_config,
-        num_labels=len(label_list) + 1,
+        num_labels=len(label_list),
         init_checkpoint=args.init_checkpoint,
         learning_rate=args.learning_rate,
         num_train_steps=num_train_steps,
