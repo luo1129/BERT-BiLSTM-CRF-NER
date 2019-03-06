@@ -298,7 +298,7 @@ def optimize_ner_model(args, num_labels,  logger=None):
                 tmp_g = graph_util.convert_variables_to_constants(sess, graph.as_graph_def(), ['pred_ids'])
                 logger.info('model cut finished !!!')
         # 存储二进制模型到文件中
-        logger.info('write graph to a tmp file: %s' % pb_file)
+        logger.info('write graph to a tmp file1: %s' % pb_file)
         with tf.gfile.GFile(pb_file, 'wb') as f:
             f.write(tmp_g.SerializeToString())
         return pb_file
@@ -354,7 +354,7 @@ def optimize_class_model(args, num_labels,  logger=None):
                 tmp_g = graph_util.convert_variables_to_constants(sess, graph.as_graph_def(), ['pred_prob'])
                 logger.info('predict cut finished !!!')
         # 存储二进制模型到文件中
-        logger.info('write graph to a tmp file: %s' % pb_file)
+        logger.info('write graph to a tmp file2: %s' % pb_file)
         with tf.gfile.GFile(pb_file, 'wb') as f:
             f.write(tmp_g.SerializeToString())
         return pb_file
