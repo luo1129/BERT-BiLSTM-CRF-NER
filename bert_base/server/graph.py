@@ -279,14 +279,15 @@ def optimize_ner_model(args, num_labels,  logger=None):
             with tf.Session() as sess:
                 input_ids = tf.placeholder(tf.int32, (None, args.max_seq_len), 'input_ids')
                 input_mask = tf.placeholder(tf.int32, (None, args.max_seq_len), 'input_mask')
+                print("---------------")
                 print(input_ids)
+                print(num_labels)
                 bert_config = modeling.BertConfig.from_json_file(os.path.join(args.bert_model_dir, 'bert_config.json'))
                 from bert_base.train.models import create_model
                 (total_loss, logits, trans, pred_ids) = create_model(
                     bert_config=bert_config, is_training=False, input_ids=input_ids, input_mask=input_mask, segment_ids=None,
                     labels=None, num_labels=num_labels, use_one_hot_embeddings=False, dropout_rate=1.0)
                 pred_ids = tf.identity(pred_ids, 'pred_ids')
-                print(pred_ids)
                 saver = tf.train.Saver()
 
             with tf.Session() as sess:
