@@ -258,7 +258,6 @@ def optimize_ner_model(args, num_labels,  logger=None):
     :param logger:
     :return:
     """
-    print("////////////////////////////////")
     if not logger:
         logger = set_logger(colored('NER_MODEL, Lodding...', 'cyan'), args.verbose)
     try:

@@ -98,6 +98,7 @@ class NerProcessor(DataProcessor):
             self._read_data(os.path.join(data_dir, "test.txt")), "test")
 
     def get_labels(self, labels=None):
+        print("//////get——label//////")
         if labels is not None:
             try:
                 # 支持从文件中读取标签类型
@@ -112,10 +113,14 @@ class NerProcessor(DataProcessor):
             except Exception as e:
                 print(e)
         # 通过读取train文件获取标签的方法会出现一定的风险。
+        print("//////get——a//////")
         if os.path.exists(os.path.join(self.output_dir, 'label_list.pkl')):
+            print("//////get——b//////")
             with codecs.open(os.path.join(self.output_dir, 'label_list.pkl'), 'rb') as rf:
                 self.labels = pickle.load(rf)
         else:
+            print("//////get——c//////")
+            print(len(self.labels))
             if len(self.labels) > 0:
                 self.labels = self.labels.union(set(["X", "[CLS]", "[SEP]"]))
                 with codecs.open(os.path.join(self.output_dir, 'label_list.pkl'), 'wb') as rf:
