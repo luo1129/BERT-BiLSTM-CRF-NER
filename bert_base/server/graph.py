@@ -271,9 +271,7 @@ def optimize_ner_model(args, num_labels,  logger=None):
             tmp_file = args.model_pb_dir
         pb_file = os.path.join(tmp_file, 'ner_model.pb')
         if os.path.exists(pb_file):
-            print('pb_file exits', pb_file)
             return pb_file
-        print(1)
         import tensorflow as tf
 
         graph = tf.Graph()
@@ -281,13 +279,14 @@ def optimize_ner_model(args, num_labels,  logger=None):
             with tf.Session() as sess:
                 input_ids = tf.placeholder(tf.int32, (None, args.max_seq_len), 'input_ids')
                 input_mask = tf.placeholder(tf.int32, (None, args.max_seq_len), 'input_mask')
-
+                print(input_ids)
                 bert_config = modeling.BertConfig.from_json_file(os.path.join(args.bert_model_dir, 'bert_config.json'))
                 from bert_base.train.models import create_model
                 (total_loss, logits, trans, pred_ids) = create_model(
                     bert_config=bert_config, is_training=False, input_ids=input_ids, input_mask=input_mask, segment_ids=None,
                     labels=None, num_labels=num_labels, use_one_hot_embeddings=False, dropout_rate=1.0)
                 pred_ids = tf.identity(pred_ids, 'pred_ids')
+                print(pred_ids)
                 saver = tf.train.Saver()
 
             with tf.Session() as sess:
@@ -297,13 +296,10 @@ def optimize_ner_model(args, num_labels,  logger=None):
                 from tensorflow.python.framework import graph_util
                 tmp_g = graph_util.convert_variables_to_constants(sess, graph.as_graph_def(), ['pred_ids'])
                 logger.info('model cut finished !!!')
-        print(2)
         # 存储二进制模型到文件中
         logger.info('write graph to a tmp file: %s' % pb_file)
         with tf.gfile.GFile(pb_file, 'wb') as f:
             f.write(tmp_g.SerializeToString())
-        print(pb_file)
-        print(3)
         return pb_file
     except Exception as e:
         logger.error('fail to optimize the graph! %s' % e, exc_info=True)
