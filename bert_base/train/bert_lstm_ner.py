@@ -572,6 +572,8 @@ def train(args):
     label_list = processor.get_labels()
     # 返回的model_dn 是一个函数，其定义了模型，训练，评测方法，并且使用钩子参数，加载了BERT模型的参数进行了自己模型的参数初始化过程
     # tf 新的架构方法，通过定义model_fn 函数，定义模型，然后通过EstimatorAPI进行模型的其他工作，Es就可以控制模型的训练，预测，评估工作等。
+    print(label_list)
+    print(len(label_list) + 1)
     model_fn = model_fn_builder(
         bert_config=bert_config,
         num_labels=len(label_list) + 1,
