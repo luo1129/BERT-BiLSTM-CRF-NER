@@ -31,5 +31,5 @@ def class_test():
 
 
 if __name__ == '__main__':
-    class_test()
-    # ner_test()
+    # class_test()
+    ner_test()
